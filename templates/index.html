@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet" />
+    <title>Aplikasi Prediksi Saham Telkom</title>
+</head>
+
+<body>
+    <header class="flex gap-x-8 justify-center items-center h-32 bg-green-300">
+        <img src="http://www.dikti.go.id/microcredential-ai/assets/1.png" alt="Logo" style="width:200px">
+        <img class="h-16" src="http://www.dikti.go.id/microcredential-ai/assets/kampus-merdeka.png" alt="" />
+        <img class="h-16" src="http://www.dikti.go.id/microcredential-ai/assets/2.png" alt="" />
+    </header>
+    <section class="
+                flex
+                justify-center
+                items-center
+                w-screen
+                h-screen
+                bg-green-300
+            ">
+        <main 
+            class="
+                flex flex-col
+                justify-center
+                items-center
+                p-16
+                bg-gray-50	
+                shadow-md
+                rounded-lg
+            "
+        >
+            <h1 class="text-3xl font-bold">Masukkan Harga Saham Close:</h1>
+            <form action="{{ url_for('predict') }}" method="post" class="flex flex-col">
+                <label for="Close" class="mb-2">Close (<i>Data close 5 hari yang lalu</i>)</label>
+                <input type="text" name="Close" placeholder="Close" required="required"
+                    class="p-4 bg-gray-100 rounded-md" />
+
+
+                <button type="submit" class="
+                        flex
+                        justify-center
+                        align-center
+                        mt-8
+                        p-4
+                        bg-gradient-to-r
+                        from-green-400
+                        to-blue-500
+                        text-white
+                        rounded-md
+                    ">
+                    PREDIKSI SEKARANG
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="feather feather-arrow-right ml-4">
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                        <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                </button>
+            </form>
+            <section class="mt-8 h-full flex-auto rounded-lg md:mt-0 md:ml-8">
+                <div class="bg-white p-16 rounded-lg">
+                    <h1 class="text-2xl mb-8">
+                        Prediksi Saham Sekarang adalah
+                    </h1>
+                    <h2 class="text-5xl font-bold">Rp {{predict_close}}</h2>
+                </div>
+            </section> 
+        </main>  
+</body>
+</html>
